@@ -1,0 +1,10 @@
+  for(let word of haystack){
+    if (word=="needle"){
+      return "found the needle at position "+ haystack.indexOf(word)
+    }
+    
+  
+  
+    return "no Needle found"
+}
+

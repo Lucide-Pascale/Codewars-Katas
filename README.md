@@ -1,1 +1,1 @@
-This repo is for all my solution to the Codewars Katas I solved
+This repo is for all my solutions to the Codewars Katas I solved
