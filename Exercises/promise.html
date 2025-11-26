@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promise This Demo</title>
+</head>
+<body>
+
+<h2>Open your Console (F12) to see the output</h2>
+
+<script>
+  console.log("Outside any function → this is:");
+  console.log(this); // window
+
+  // Promise executor using a normal function
+  new Promise(function(resolve, reject) {
+    console.log("Inside Promise executor (normal function) → this is:");
+    console.log(this); // window (in browser non-strict mode)
+
+    resolve();
+  }).then(function() {
+    console.log("Inside .then() callback (normal function) → this is:");
+    console.log(this); // window (non-strict)
+  });
+
+  // Using arrow functions to show lexical this
+  const obj = {
+    value: 42,
+    test: function() {
+      console.log("Inside obj.test normal function → this.value:");
+      console.log(this.value);
+
+      new Promise((resolve) => {
+        console.log("Inside Promise executor (arrow) → this is:");
+        console.log(this); // same as obj, because arrow inherits this
+
+        resolve();
+      }).then(() => {
+        console.log("Inside .then() (arrow) → this is:");
+        console.log(this); // also obj
+      });
+    }
+  };
+
+  obj.test();
+</script>
+
+</body>
+</html>
